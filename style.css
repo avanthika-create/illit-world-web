@@ -1,0 +1,34 @@
+html, body { 
+    margin: 0; 
+    padding: 0; 
+
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 1920px;
+    height: 1080px;
+
+    position: relative;
+
+    background-image: url(images/illitworldbg.png);
+    background-size: cover;
+    background-position: center; 
+}
+
+.computer { 
+  position: absolute;
+  left: 15%;
+  top:15%;
+}
+
+.computer img { 
+   width: 2000px;
+    height: 1010px;
+}
+
+.button { 
+    position: absolute;
+}
+
