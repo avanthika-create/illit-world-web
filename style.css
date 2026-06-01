@@ -17,18 +17,27 @@ body {
     background-position: center; 
 }
 
-.computer { 
-  position: absolute;
-  left: 15%;
-  top:15%;
-}
-
-.computer img { 
-   width: 2000px;
-    height: 1010px;
-}
-
-.button { 
+.computer {
     position: absolute;
 }
 
+.screen-image {
+    position: absolute;
+    right: 270px;
+    top: 243px;
+    z-index: 1;
+}
+
+.computer-frame {
+    position: relative;
+    left: 300px;
+    top: 100px;
+    z-index: 10;
+}
+
+.button { 
+     position: absolute; 
+    left: 300px;
+    top: 100px;
+    z-index: 5;
+}
