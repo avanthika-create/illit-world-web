@@ -5,16 +5,20 @@ function openMember(name) {
   viewer.classList.remove("hidden");
 
   const members = {
-    yunah: "images/yunah.png",
-    minju: "images/minju.png",
-    moka: "images/moka.png",
-    wonhee: "images/wonhee.png",
-    iroha: "images/iroha.png"
-  };s
+    yunah: "images/illityunah.png",
+    minju: "images/illitminju.png",
+    moka: "images/illitmoka.png",
+    wonhee: "images/illitwonhee.png",
+    iroha: "images/illitiroha.png"
+  };
 
   content.innerHTML = `
     <img src="${members[name]}" class="member-photo">
   `;
+}
+
+function closeViewer() {
+  viewer.classList.remove("show");
 }
 
 function openTrash() {
@@ -23,6 +27,10 @@ function openTrash() {
   content.innerHTML = `
     <h1>Recycle Bin</h1>
     <p>Nothing here.</p>
+
+    <a href="https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN?si=6xNHExHAQ2iVk8dxgU_SwA" 
+    target="_blank">Illit on Spotify
+    </a>
   `;
 }
 
