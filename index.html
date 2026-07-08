@@ -48,9 +48,21 @@
     </div>
 
     <div id="viewer" class="hidden">
+        <div id="viewer-header">
+            drag me
+        <span id="window-title"></span>
+        <div id="close" onclick="closeViewer()">✕</div>
+        </div>
+
         <div id="viewer-content"></div>
         <div id="close" onclick="closeViewer()">✕</div>
    </div>
+
+
+   <audio id="clickSound" src="images/clicksound.mp3"></audio>
+
+   <audio id="dragSound" src="images/dragsound.mp3"></audio>
+
 
    <script src="script.js"></script>
 </body>
