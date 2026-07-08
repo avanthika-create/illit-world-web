@@ -5,19 +5,36 @@ const content = document.getElementById("viewer-content");
 const header = document.getElementById("viewer-header");
 const clickSound = document.getElementById("clickSound");
 
+const dragSound = document.getElementById("dragSound");
+
+const closeSound = document.getElementById("closeSound");
+
+// document.querySelectorAll(".icon").forEach(icon => { icon.classList.remove("selected");})
+// clickedIcon.classList.add("selected"); 
+
+header.addEventListener("mousedown", () => {
+  isDragging = true;
+
+  dragSound.loop = true;
+ dragSound.play();
+
+  dragSound.currentTime = -1;
+  dragSound.play();
+
+  offsetX = event.clientX - viewer.offsetLeft;
+  offsetY = event.clientY - viewer.offsetTop;
+
+});
+
+
+
 function playClick() { 
-  clickSound.currentTime = 0;
+  clickSound.currentTime = -1;
   clickSound.play();
 }
 
 let isDragging = false;
 let offsetX, offsetY;
-
-header.addEventListener("mousedown", (e) => {
-  isDragging = true; 
-  offsetX = e.clientX - viewer.offsetLeft; 
-  offsetY = e.clientY - viewer.offsetTop;
-});
 
 document.addEventListener("mousemove", (e) => {
   if (!isDragging) return; 
@@ -45,18 +62,24 @@ document.addEventListener("mousemove", (e) => {
 
 document.addEventListener("mouseup", () => {
   isDragging = false;
+  dragSound.loop = false;
+  dragSound.pause();
+  dragSound.currentTime = 0;
 });
 
 function openMember(name) {
+
+  document.querySelector(".screen-image").classList.add("blur");
+
   playClick();
   document.getElementById("window-title").textContent;
   viewer.classList.remove("hidden");
   const members = {
-    yunah: "images/illityunah.png",
-    minju: "images/illitminju.png",
-    moka: "images/illitmoka.png",
-    wonhee: "images/illitwonhee.png",
-    iroha: "images/illitiroha.png"
+    yunah: "assets/illityunah.png",
+    minju: "assets/illitminju.png",
+    moka: "assets/illitmoka.png",
+    wonhee: "assets/illitwonhee.png",
+    iroha: "assets/illitiroha.png"
   };
 
   content.innerHTML = `
@@ -65,13 +88,16 @@ function openMember(name) {
 }
 
 function openTrash() {
+
+  document.querySelector(".screen-image").classList.add("blur");
+
   playClick();
   document.getElementById("window-title").textContent = "";
   viewer.classList.remove("hidden");
 
   content.innerHTML = `
     <h1>Recycle Bin</h1>
-    <p>Nothing here.</p>
+    <p>recovered file...</p>
 
     <a href="https://open.spotify.com/artist/36cgvBn0aadzOijnjjwqMN?si=6xNHExHAQ2iVk8dxgU_SwA" 
     target="_blank">Illit on Spotify
@@ -81,7 +107,15 @@ function openTrash() {
 }
 
 function closeViewer() {
+
+  document.querySelector(".screen-image").classList.remove("blur");
+  document.getElementById("window-title").textContent = "";
+
   viewer.classList.add("hidden");
   content.innerHTML = "";
+
+  closeSound.currentTime = -1; 
+  closeSound.play();
+
 }
 
